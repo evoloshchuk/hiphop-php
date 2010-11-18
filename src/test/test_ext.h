@@ -47,6 +47,7 @@
 #include <test/test_ext_iterator.h>
 #include <test/test_ext_json.h>
 #include <test/test_ext_ldap.h>
+#include <test/test_ext_libredis.h>
 #include <test/test_ext_magick.h>
 #include <test/test_ext_mailparse.h>
 #include <test/test_ext_math.h>

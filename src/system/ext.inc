@@ -32,6 +32,7 @@
 #include "iterator.inc"
 #include "json.inc"
 #include "ldap.inc"
+#include "libredis.inc"
 #include "magick.inc"
 #include "mailparse.inc"
 #include "math.inc"

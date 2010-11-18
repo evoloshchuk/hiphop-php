@@ -29,6 +29,10 @@ $files_external_party = array(
   'runtime/ext/ext_memcached.cpp' => 'hyves',
   'test/test_ext_memcached.h' => 'hyves',
   'test/test_ext_memcached.cpp' => 'hyves',
+  'runtime/ext/ext_libredis.h' => 'hyves',
+  'runtime/ext/ext_libredis.cpp' => 'hyves',
+  'test/test_ext_libredis.h' => 'hyves',
+  'test/test_ext_libredis.cpp' => 'hyves',
 );
 
 $files_zend = array(
