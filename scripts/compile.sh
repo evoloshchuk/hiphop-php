@@ -84,10 +84,28 @@ echo "Found $(wc -l "$COMPILE_LIST" | cut -d' ' -f1) source files"
 	"${OPTIONS[@]}"
 
 cd "$OUT_DIR"
-echo "Run cmake..."
-TIMEFORMAT="cmake took %3lR (%3lU user, %3lS system)"
-time cmake -D "PROGRAM_NAME:string=$PROGRAM_NAME" .
 
-echo "Run make..."
-TIMEFORMAT="make took %3lR (%3lU user, %3lS system)"
-time make -j "$JOBS" "$PROGRAM_NAME/fast"
+echo "Checking for distcc support"
+if [ -e "/etc/distcc/hosts" ]; then
+	echo "Compiling with distcc"
+
+	echo "Run cmake..."
+	TIMEFORMAT="cmake took %3lR (%3lU user, %3lS system)"
+	time DISTCC_FALLBACK=0 HOSTCC='distcc gcc' CC='distcc gcc' CXX='distcc g++' \
+		cmake -D "PROGRAM_NAME:string=$PROGRAM_NAME" .
+
+	echo "Run make..."
+	TIMEFORMAT="make took %3lR (%3lU user, %3lS system)"
+	time DISTCC_FALLBACK=0 make -j "$JOBS" \
+		HOSTCC='distcc gcc' CC='distcc gcc' CXX='distcc g++' "$PROGRAM_NAME/fast"
+else
+	echo "You have no distcc support, (/etc/distcc/hosts not found)"
+
+	echo "Run cmake..."
+	TIMEFORMAT="cmake took %3lR (%3lU user, %3lS system)"
+	time cmake -D "PROGRAM_NAME:string=$PROGRAM_NAME" .
+
+	echo "Run make..."
+	TIMEFORMAT="make took %3lR (%3lU user, %3lS system)"
+	time make -j "$JOBS" "$PROGRAM_NAME/fast"
+fi
