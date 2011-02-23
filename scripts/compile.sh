@@ -81,6 +81,7 @@ echo "Found $(wc -l "$COMPILE_LIST" | cut -d' ' -f1) source files"
 	--cluster-count "$CLUSTERS" \
 	--input-list "$COMPILE_LIST" \
 	--program "$PROGRAM_NAME" \
+	--opts "deadcode,localcopy,string,cflow" \
 	"${OPTIONS[@]}"
 
 cd "$OUT_DIR"
