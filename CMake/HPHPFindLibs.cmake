@@ -307,7 +307,7 @@ if (FREEBSD)
 endif()
 
 FIND_LIBRARY(LIBREDIS_LIB redis)
-FIND_PATH(LIBREDIS_INCLUDE_DIR libredis/redis.h)
+FIND_PATH(LIBREDIS_INCLUDE_DIR redis.h)
 if (NOT LIBREDIS_LIB OR NOT LIBREDIS_INCLUDE_DIR)
 	message(FATAL_ERROR "libredis not found")
 endif()

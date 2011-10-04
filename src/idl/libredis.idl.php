@@ -14,7 +14,7 @@
 // Preamble: C++ code inserted at beginning of ext_{name}.h
 
 DefinePreamble(<<<CPP
-#include <libredis/redis.h>
+#include <redis.h>
 CPP
 );
 
