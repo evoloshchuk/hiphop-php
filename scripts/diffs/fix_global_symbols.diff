@@ -2,12 +2,12 @@ diff --git a/src/runtime/base/program_functions.cpp b/src/runtime/base/program_f
 index 581e6c4..7759292 100644
 --- a/src/runtime/base/program_functions.cpp
 +++ b/src/runtime/base/program_functions.cpp
-@@ -391,7 +391,7 @@ void execute_command_line_begin(int argc, char **argv, int xhprof) {
+@@ -396,7 +396,7 @@ void execute_command_line_begin(int argc, char **argv, int xhprof) {
    SystemGlobals *g = (SystemGlobals *)get_global_variables();
  
    // reset global symbols to nulls or empty arrays
--  pm_php$globals$symbols_php();
-+  pm_php$$globals$$symbols$_php();
+-  pm_php$globals$symbols_php(false, g, g);
++  pm_php$$globals$$symbols$_php(false, g, g);
  
    process_env_variables(g->GV(_ENV));
    g->GV(_ENV).set("HPHP", 1);
@@ -15,12 +15,12 @@ diff --git a/src/runtime/base/server/http_protocol.cpp b/src/runtime/base/server
 index 6639e37..8d40178 100644
 --- a/src/runtime/base/server/http_protocol.cpp
 +++ b/src/runtime/base/server/http_protocol.cpp
-@@ -87,7 +87,7 @@ void HttpProtocol::PrepareSystemVariables(Transport *transport,
+@@ -89,7 +89,7 @@ void HttpProtocol::PrepareSystemVariables(Transport *transport,
    const VirtualHost *vhost = VirtualHost::GetCurrent();
  
    // reset global symbols to nulls or empty arrays
--  pm_php$globals$symbols_php();
-+  pm_php$$globals$$symbols$_php();
+-  pm_php$globals$symbols_php(false, g, g);
++  pm_php$$globals$$symbols$_php(false, g, g);
  
    Variant &server = g->GV(_SERVER);
    server.set("REQUEST_START_TIME", time(NULL));

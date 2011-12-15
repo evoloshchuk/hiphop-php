@@ -39,16 +39,16 @@ index d19260e..8aa4fa9 100644
    return this;
  }
  
-@@ -285,7 +285,7 @@ ObjectData *c_DateTimeZone::clone() {
+@@ -286,7 +286,7 @@ ObjectData *c_DateTimeZone::clone() {
    return obj;
  }
  
--c_DateInterval::c_DateInterval() {
-+/*c_DateInterval::c_DateInterval() {
+-c_DateInterval::c_DateInterval(const ObjectStaticCallbacks *cb) : ExtObjectData(cb) {
++/*c_DateInterval::c_DateInterval(const ObjectStaticCallbacks *cb) : ExtObjectData(cb) {
  }
  
  c_DateInterval::~c_DateInterval() {
-@@ -382,7 +382,7 @@ String c_DateInterval::t_format(CStrRef format) {
+@@ -383,7 +383,7 @@ String c_DateInterval::t_format(CStrRef format) {
      }
    }
    return s.detach();
