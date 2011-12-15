@@ -205,8 +205,6 @@ class c_DateTimeZone : public ExtObjectData {
 FORWARD_DECLARE_CLASS_BUILTIN(DateInterval);
 class c_DateInterval : public ExtObjectData {
  public:
-  BEGIN_CLASS_MAP(DateInterval)
-  END_CLASS_MAP(DateInterval)
   DECLARE_CLASS(DateInterval, DateInterval, ObjectData)
 
   // properties
@@ -220,7 +218,7 @@ class c_DateInterval : public ExtObjectData {
   public: Variant m_days;
 
   // need to implement
-  public: c_DateInterval();
+  public: c_DateInterval(const ObjectStaticCallbacks *cb = &cw_DateInterval);
   public: ~c_DateInterval();
   public: void t___construct(CStrRef interval_spec);
   DECLARE_METHOD_INVOKE_HELPERS(__construct);
@@ -236,8 +234,7 @@ class c_DateInterval : public ExtObjectData {
 
   // implemented by HPHP
   public: c_DateInterval *create(String interval_spec);
-  public: void dynConstruct(CArrRef Params);
-  public: void getConstructor(MethodCallPackage &mcp);
+  static const ClassPropTable os_prop_table;
 
 };
 

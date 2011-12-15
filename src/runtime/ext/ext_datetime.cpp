@@ -286,7 +286,7 @@ ObjectData *c_DateTimeZone::clone() {
   return obj;
 }
 
-c_DateInterval::c_DateInterval() {
+c_DateInterval::c_DateInterval(const ObjectStaticCallbacks *cb) : ExtObjectData(cb) {
 }
 
 c_DateInterval::~c_DateInterval() {
