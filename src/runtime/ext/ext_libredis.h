@@ -34,12 +34,10 @@ Object f_libredis();
 FORWARD_DECLARE_CLASS_BUILTIN(_Libredis_Ketama);
 class c__Libredis_Ketama : public ExtObjectData, public Sweepable {
  public:
-  BEGIN_CLASS_MAP(_Libredis_Ketama)
-  END_CLASS_MAP(_Libredis_Ketama)
   DECLARE_CLASS(_Libredis_Ketama, _Libredis_Ketama, ObjectData)
 
   // need to implement
-  public: c__Libredis_Ketama();
+  public: c__Libredis_Ketama(const ObjectStaticCallbacks *cb = &cw__Libredis_Ketama);
   public: ~c__Libredis_Ketama();
   public: void t___construct();
   DECLARE_METHOD_INVOKE_HELPERS(__construct);
@@ -56,8 +54,7 @@ class c__Libredis_Ketama : public ExtObjectData, public Sweepable {
 
   // implemented by HPHP
   public: c__Libredis_Ketama *create();
-  public: void dynConstruct(CArrRef Params);
-  public: void getConstructor(MethodCallPackage &mcp);
+  static const ClassPropTable os_prop_table;
 
  public:
   Ketama *getKetama();
@@ -72,12 +69,10 @@ class c__Libredis_Ketama : public ExtObjectData, public Sweepable {
 FORWARD_DECLARE_CLASS_BUILTIN(_Libredis_Executor);
 class c__Libredis_Executor : public ExtObjectData, public Sweepable {
  public:
-  BEGIN_CLASS_MAP(_Libredis_Executor)
-  END_CLASS_MAP(_Libredis_Executor)
   DECLARE_CLASS(_Libredis_Executor, _Libredis_Executor, ObjectData)
 
   // need to implement
-  public: c__Libredis_Executor();
+  public: c__Libredis_Executor(const ObjectStaticCallbacks *cb = &cw__Libredis_Executor);
   public: ~c__Libredis_Executor();
   public: void t___construct();
   DECLARE_METHOD_INVOKE_HELPERS(__construct);
@@ -90,8 +85,7 @@ class c__Libredis_Executor : public ExtObjectData, public Sweepable {
 
   // implemented by HPHP
   public: c__Libredis_Executor *create();
-  public: void dynConstruct(CArrRef Params);
-  public: void getConstructor(MethodCallPackage &mcp);
+  static const ClassPropTable os_prop_table;
 
  public:
   Executor *getExecutor();
@@ -106,12 +100,10 @@ class c__Libredis_Executor : public ExtObjectData, public Sweepable {
 FORWARD_DECLARE_CLASS_BUILTIN(_Libredis_Connection);
 class c__Libredis_Connection : public ExtObjectData, public Sweepable {
  public:
-  BEGIN_CLASS_MAP(_Libredis_Connection)
-  END_CLASS_MAP(_Libredis_Connection)
   DECLARE_CLASS(_Libredis_Connection, _Libredis_Connection, ObjectData)
 
   // need to implement
-  public: c__Libredis_Connection();
+  public: c__Libredis_Connection(const ObjectStaticCallbacks *cb = &cw__Libredis_Connection);
   public: ~c__Libredis_Connection();
   public: void t___construct(CStrRef address);
   DECLARE_METHOD_INVOKE_HELPERS(__construct);
@@ -126,8 +118,7 @@ class c__Libredis_Connection : public ExtObjectData, public Sweepable {
 
   // implemented by HPHP
   public: c__Libredis_Connection *create(String address);
-  public: void dynConstruct(CArrRef Params);
-  public: void getConstructor(MethodCallPackage &mcp);
+  static const ClassPropTable os_prop_table;
 
  public:
   Connection *getConnection();
@@ -154,12 +145,10 @@ class c__Libredis_Connection : public ExtObjectData, public Sweepable {
 FORWARD_DECLARE_CLASS_BUILTIN(_Libredis_Batch);
 class c__Libredis_Batch : public ExtObjectData, public Sweepable {
  public:
-  BEGIN_CLASS_MAP(_Libredis_Batch)
-  END_CLASS_MAP(_Libredis_Batch)
   DECLARE_CLASS(_Libredis_Batch, _Libredis_Batch, ObjectData)
 
   // need to implement
-  public: c__Libredis_Batch();
+  public: c__Libredis_Batch(const ObjectStaticCallbacks *cb = &cw__Libredis_Batch);
   public: ~c__Libredis_Batch();
   public: void t___construct();
   DECLARE_METHOD_INVOKE_HELPERS(__construct);
@@ -180,8 +169,7 @@ class c__Libredis_Batch : public ExtObjectData, public Sweepable {
 
   // implemented by HPHP
   public: c__Libredis_Batch *create();
-  public: void dynConstruct(CArrRef Params);
-  public: void getConstructor(MethodCallPackage &mcp);
+  static const ClassPropTable os_prop_table;
 
  public:
   Batch *getBatch();
@@ -196,12 +184,10 @@ class c__Libredis_Batch : public ExtObjectData, public Sweepable {
 FORWARD_DECLARE_CLASS_BUILTIN(_Libredis_Redis);
 class c__Libredis_Redis : public ExtObjectData, public Sweepable {
  public:
-  BEGIN_CLASS_MAP(_Libredis_Redis)
-  END_CLASS_MAP(_Libredis_Redis)
   DECLARE_CLASS(_Libredis_Redis, _Libredis_Redis, ObjectData)
 
   // need to implement
-  public: c__Libredis_Redis();
+  public: c__Libredis_Redis(const ObjectStaticCallbacks *cb = &cw__Libredis_Redis);
   public: ~c__Libredis_Redis();
   public: void t___construct();
   DECLARE_METHOD_INVOKE_HELPERS(__construct);
@@ -220,8 +206,7 @@ class c__Libredis_Redis : public ExtObjectData, public Sweepable {
 
   // implemented by HPHP
   public: c__Libredis_Redis *create();
-  public: void dynConstruct(CArrRef Params);
-  public: void getConstructor(MethodCallPackage &mcp);
+  static const ClassPropTable os_prop_table;
 
  public:
   static void updateLastError();

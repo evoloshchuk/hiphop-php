@@ -53,8 +53,8 @@ Object f_libredis() {
 ///////////////////////////////////////////////////////////////////////////////
 // class _Libredis_Ketama
 
-c__Libredis_Ketama::c__Libredis_Ketama()
-  : m_ketama(Ketama_new()) { }
+c__Libredis_Ketama::c__Libredis_Ketama(const ObjectStaticCallbacks *cb)
+  : ExtObjectData(cb), m_ketama(Ketama_new()) { }
 c__Libredis_Ketama::~c__Libredis_Ketama() {
   Ketama_free(m_ketama);
 }
@@ -93,8 +93,8 @@ void c__Libredis_Ketama::t_create_continuum() {
 ///////////////////////////////////////////////////////////////////////////////
 // class _Libredis_Executor
 
-c__Libredis_Executor::c__Libredis_Executor()
-  : m_executor(Executor_new()) { }
+c__Libredis_Executor::c__Libredis_Executor(const ObjectStaticCallbacks *cb)
+  : ExtObjectData(cb), m_executor(Executor_new()) { }
 c__Libredis_Executor::~c__Libredis_Executor() {
   Executor_free(m_executor);
 }
@@ -163,7 +163,8 @@ c__Libredis_Connection::ConnectionWrapper::~ConnectionWrapper() {
   Connection_free(connection);
 }
 
-c__Libredis_Connection::c__Libredis_Connection()  { }
+c__Libredis_Connection::c__Libredis_Connection(const ObjectStaticCallbacks *cb)
+  : ExtObjectData(cb)  { }
 c__Libredis_Connection::~c__Libredis_Connection() { }
 
 void c__Libredis_Connection::t___construct(CStrRef address) {
@@ -269,8 +270,8 @@ Variant c__Libredis_Connection::t_get(CStrRef key, int timeout /*= 5000*/) {
 ///////////////////////////////////////////////////////////////////////////////
 // class _Libredis_Batch
 
-c__Libredis_Batch::c__Libredis_Batch()
-  : m_batch(Batch_new()) { }
+c__Libredis_Batch::c__Libredis_Batch(const ObjectStaticCallbacks *cb)
+  : ExtObjectData(cb), m_batch(Batch_new()) { }
 c__Libredis_Batch::~c__Libredis_Batch() {
   Batch_free(m_batch);
 }
@@ -363,7 +364,8 @@ bool c__Libredis_Batch::t_execute(CObjRef connection, int timeout /*= 5000*/) {
 ///////////////////////////////////////////////////////////////////////////////
 // class _Libredis_Redis
 
-c__Libredis_Redis::c__Libredis_Redis()    { }
+c__Libredis_Redis::c__Libredis_Redis(const ObjectStaticCallbacks *cb)
+  : ExtObjectData(cb)    { }
 c__Libredis_Redis::~c__Libredis_Redis()   { }
 
 void c__Libredis_Redis::t___construct() { }
