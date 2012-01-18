@@ -9,7 +9,7 @@ cd hiphop-php
 git checkout master
 git reset --hard facebook/master
 
-git merge --no-ff origin/bugfixes origin/syslog origin/datetime origin/misc origin/loop_documents_sleep
+git merge --no-ff origin/bugfixes origin/syslog origin/datetime origin/misc origin/libredis
 
 git apply ../datetime_temp.diff
 cmake . && make -j4
@@ -24,7 +24,7 @@ git checkout test-merge
 git reset --hard master
 
 git checkout master
-git merge --no-ff origin/libredis origin/memcached-hyves
+git merge --no-ff origin/memcached-hyves
 
 cmake . && make -j4
 (cd src/system && make)
