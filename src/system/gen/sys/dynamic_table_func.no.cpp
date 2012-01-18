@@ -2669,6 +2669,14 @@ Variant ifa_magickcropimage(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
 Variant i_magickcropimage(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_magickcropimage);
 }
+Variant ifa_date_interval_create_from_date_string(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 1)) return throw_wrong_arguments("date_interval_create_from_date_string", count, 1, 1, 1);
+  CVarRef arg0(a0);
+  return (x_date_interval_create_from_date_string(arg0));
+}
+Variant i_date_interval_create_from_date_string(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_interval_create_from_date_string);
+}
 Variant ifa_function_exists(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 1)) return throw_wrong_arguments("function_exists", count, 1, 1, 1);
   CVarRef arg0(a0);
@@ -3138,6 +3146,15 @@ Variant i_imagepstext(void *extra, CArrRef params) {
     CVarRef arg11((ad->getValue(pos = ad->iter_advance(pos))));
     return (x_imagepstext(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
   }
+}
+Variant ifa_date_sub(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 2)) return throw_wrong_arguments("date_sub", count, 2, 2, 1);
+  CVarRef arg0(a0);
+  CVarRef arg1(a1);
+  return (x_date_sub(arg0, arg1));
+}
+Variant i_date_sub(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_sub);
 }
 Variant ifa_ldap_sort(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 3)) return throw_wrong_arguments("ldap_sort", count, 3, 3, 1);
@@ -4309,8 +4326,12 @@ Variant i_iptcparse(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_iptcparse);
 }
 Variant ifa_timezone_identifiers_list(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
-  if (UNLIKELY(count > 0)) return throw_toomany_arguments("timezone_identifiers_list", 0, 1);
-  return (x_timezone_identifiers_list());
+  if (UNLIKELY(count > 2)) return throw_toomany_arguments("timezone_identifiers_list", 2, 1);
+  if (count <= 0) return (x_timezone_identifiers_list());
+  CVarRef arg0(a0);
+  if (count <= 1) return (x_timezone_identifiers_list(arg0));
+  CVarRef arg1(a1);
+  return (x_timezone_identifiers_list(arg0, arg1));
 }
 Variant i_timezone_identifiers_list(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_timezone_identifiers_list);
@@ -4621,6 +4642,14 @@ Variant ifa_qlzcompress(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
 }
 Variant i_qlzcompress(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_qlzcompress);
+}
+Variant ifa_timezone_location_get(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 1)) return throw_wrong_arguments("timezone_location_get", count, 1, 1, 1);
+  CVarRef arg0(a0);
+  return (x_timezone_location_get(arg0));
+}
+Variant i_timezone_location_get(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_timezone_location_get);
 }
 Variant ifa_magickgetimage(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 1)) return throw_wrong_arguments("magickgetimage", count, 1, 1, 1);
@@ -6550,6 +6579,14 @@ Variant i_drawarc(void *extra, CArrRef params) {
     return (x_drawarc(arg0, arg1, arg2, arg3, arg4, arg5, arg6), null);
   }
 }
+Variant ifa_date_timestamp_get(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 1)) return throw_wrong_arguments("date_timestamp_get", count, 1, 1, 1);
+  CVarRef arg0(a0);
+  return (x_date_timestamp_get(arg0));
+}
+Variant i_date_timestamp_get(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_timestamp_get);
+}
 Variant ifa_msg_queue_exists(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 1)) return throw_wrong_arguments("msg_queue_exists", count, 1, 1, 1);
   CVarRef arg0(a0);
@@ -8390,6 +8427,13 @@ Variant ifa_intl_get_error_message(void *extra, int count, INVOKE_FEW_ARGS_IMPL_
 Variant i_intl_get_error_message(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_intl_get_error_message);
 }
+Variant ifa_libredis(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count > 0)) return throw_toomany_arguments("libredis", 0, 1);
+  return (x_libredis());
+}
+Variant i_libredis(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_libredis);
+}
 Variant ifa_hphp_splfileobject_fscanf(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 4)) return throw_wrong_arguments("hphp_splfileobject_fscanf", count, 4, 4, 1);
   CVarRef arg0(a0);
@@ -9177,6 +9221,15 @@ Variant ifa_mcrypt_enc_get_block_size(void *extra, int count, INVOKE_FEW_ARGS_IM
 Variant i_mcrypt_enc_get_block_size(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_mcrypt_enc_get_block_size);
 }
+Variant ifa_date_timestamp_set(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 2)) return throw_wrong_arguments("date_timestamp_set", count, 2, 2, 1);
+  CVarRef arg0(a0);
+  CVarRef arg1(a1);
+  return (x_date_timestamp_set(arg0, arg1));
+}
+Variant i_date_timestamp_set(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_timestamp_set);
+}
 Variant ifa_drawsetclipunits(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 2)) return throw_wrong_arguments("drawsetclipunits", count, 2, 2, 1);
   CVarRef arg0(a0);
@@ -9931,6 +9984,17 @@ Variant ifa_drawbezier(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
 Variant i_drawbezier(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_drawbezier);
 }
+Variant ifa_date_create_from_format(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count < 2 || count > 3)) return throw_wrong_arguments("date_create_from_format", count, 2, 3, 1);
+  CVarRef arg0(a0);
+  CVarRef arg1(a1);
+  if (count <= 2) return (x_date_create_from_format(arg0, arg1));
+  CVarRef arg2(a2);
+  return (x_date_create_from_format(arg0, arg1, arg2));
+}
+Variant i_date_create_from_format(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_create_from_format);
+}
 Variant ifa_substr_compare(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count < 3 || count > 5)) return throw_wrong_arguments("substr_compare", count, 3, 5, 1);
   CVarRef arg0(a0);
@@ -10242,6 +10306,13 @@ Variant ifa_imagestring(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
 }
 Variant i_imagestring(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_imagestring);
+}
+Variant ifa_date_get_last_errors(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count > 0)) return throw_toomany_arguments("date_get_last_errors", 0, 1);
+  return (x_date_get_last_errors());
+}
+Variant i_date_get_last_errors(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_get_last_errors);
 }
 Variant ifa_mb_detect_order(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count > 1)) return throw_toomany_arguments("mb_detect_order", 1, 1);
@@ -15370,6 +15441,15 @@ Variant ifa_ldap_parse_result(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS)
 Variant i_ldap_parse_result(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_ldap_parse_result);
 }
+Variant ifa_date_parse_from_format(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 2)) return throw_wrong_arguments("date_parse_from_format", count, 2, 2, 1);
+  CVarRef arg0(a0);
+  CVarRef arg1(a1);
+  return (x_date_parse_from_format(arg0, arg1));
+}
+Variant i_date_parse_from_format(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_parse_from_format);
+}
 Variant ifa_pushdrawingwand(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 1)) return throw_wrong_arguments("pushdrawingwand", count, 1, 1, 1);
   CVarRef arg0(a0);
@@ -17383,13 +17463,6 @@ Variant ifa_posix_setpgid(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
 Variant i_posix_setpgid(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_posix_setpgid);
 }
-Variant ifa_preg_last_error(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
-  if (UNLIKELY(count > 0)) return throw_toomany_arguments("preg_last_error", 0, 1);
-  return (x_preg_last_error());
-}
-Variant i_preg_last_error(void *extra, CArrRef params) {
-  return invoke_func_few_handler(extra, params, &ifa_preg_last_error);
-}
 Variant ifa_dns_get_mx(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count < 2 || count > 3)) return throw_wrong_arguments("dns_get_mx", count, 2, 3, 1);
   CVarRef arg0(a0);
@@ -17401,14 +17474,12 @@ Variant ifa_dns_get_mx(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
 Variant i_dns_get_mx(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_dns_get_mx);
 }
-Variant ifa_hphp_invoke(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
-  if (UNLIKELY(count != 2)) return throw_wrong_arguments("hphp_invoke", count, 2, 2, 1);
-  CVarRef arg0(a0);
-  CVarRef arg1(a1);
-  return (x_hphp_invoke(arg0, arg1));
+Variant ifa_preg_last_error(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count > 0)) return throw_toomany_arguments("preg_last_error", 0, 1);
+  return (x_preg_last_error());
 }
-Variant i_hphp_invoke(void *extra, CArrRef params) {
-  return invoke_func_few_handler(extra, params, &ifa_hphp_invoke);
+Variant i_preg_last_error(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_preg_last_error);
 }
 Variant ifa_imagecopymerge(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
    return throw_wrong_arguments("imagecopymerge", count, 9, 9, 1);
@@ -17430,6 +17501,23 @@ Variant i_imagecopymerge(void *extra, CArrRef params) {
     CVarRef arg8((ad->getValue(pos = ad->iter_advance(pos))));
     return (x_imagecopymerge(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
   }
+}
+Variant ifa_hphp_invoke(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 2)) return throw_wrong_arguments("hphp_invoke", count, 2, 2, 1);
+  CVarRef arg0(a0);
+  CVarRef arg1(a1);
+  return (x_hphp_invoke(arg0, arg1));
+}
+Variant i_hphp_invoke(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_hphp_invoke);
+}
+Variant ifa_imap_mailboxmsginfo(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 1)) return throw_wrong_arguments("imap_mailboxmsginfo", count, 1, 1, 1);
+  CVarRef arg0(a0);
+  return (x_imap_mailboxmsginfo(arg0));
+}
+Variant i_imap_mailboxmsginfo(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_imap_mailboxmsginfo);
 }
 Variant ifa_register_shutdown_function(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count < 1)) return throw_missing_arguments("register_shutdown_function", count+1, 1);
@@ -17453,13 +17541,14 @@ Variant i_register_shutdown_function(void *extra, CArrRef params) {
     return (x_register_shutdown_function(count, arg0, p), null);
   }
 }
-Variant ifa_imap_mailboxmsginfo(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
-  if (UNLIKELY(count != 1)) return throw_wrong_arguments("imap_mailboxmsginfo", count, 1, 1, 1);
+Variant ifa_dom_element_set_attribute_node_ns(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 2)) return throw_wrong_arguments("dom_element_set_attribute_node_ns", count, 2, 2, 1);
   CVarRef arg0(a0);
-  return (x_imap_mailboxmsginfo(arg0));
+  CVarRef arg1(a1);
+  return (x_dom_element_set_attribute_node_ns(arg0, arg1));
 }
-Variant i_imap_mailboxmsginfo(void *extra, CArrRef params) {
-  return invoke_func_few_handler(extra, params, &ifa_imap_mailboxmsginfo);
+Variant i_dom_element_set_attribute_node_ns(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_dom_element_set_attribute_node_ns);
 }
 Variant ifa_xml_set_notation_decl_handler(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 2)) return throw_wrong_arguments("xml_set_notation_decl_handler", count, 2, 2, 1);
@@ -17469,15 +17558,6 @@ Variant ifa_xml_set_notation_decl_handler(void *extra, int count, INVOKE_FEW_ARG
 }
 Variant i_xml_set_notation_decl_handler(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_xml_set_notation_decl_handler);
-}
-Variant ifa_dom_element_set_attribute_node_ns(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
-  if (UNLIKELY(count != 2)) return throw_wrong_arguments("dom_element_set_attribute_node_ns", count, 2, 2, 1);
-  CVarRef arg0(a0);
-  CVarRef arg1(a1);
-  return (x_dom_element_set_attribute_node_ns(arg0, arg1));
-}
-Variant i_dom_element_set_attribute_node_ns(void *extra, CArrRef params) {
-  return invoke_func_few_handler(extra, params, &ifa_dom_element_set_attribute_node_ns);
 }
 Variant ifa_mysql_next_result(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count > 1)) return throw_toomany_arguments("mysql_next_result", 1, 1);
@@ -17801,9 +17881,13 @@ Variant i_is_int(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_is_int);
 }
 Variant ifa_timezone_transitions_get(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
-  if (UNLIKELY(count != 1)) return throw_wrong_arguments("timezone_transitions_get", count, 1, 1, 1);
+  if (UNLIKELY(count < 1 || count > 3)) return throw_wrong_arguments("timezone_transitions_get", count, 1, 3, 1);
   CVarRef arg0(a0);
-  return (x_timezone_transitions_get(arg0));
+  if (count <= 1) return (x_timezone_transitions_get(arg0));
+  CVarRef arg1(a1);
+  if (count <= 2) return (x_timezone_transitions_get(arg0, arg1));
+  CVarRef arg2(a2);
+  return (x_timezone_transitions_get(arg0, arg1, arg2));
 }
 Variant i_timezone_transitions_get(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_timezone_transitions_get);
@@ -17877,6 +17961,15 @@ Variant ifa_xmlwriter_write_attribute(void *extra, int count, INVOKE_FEW_ARGS_IM
 }
 Variant i_xmlwriter_write_attribute(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_xmlwriter_write_attribute);
+}
+Variant ifa_date_add(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 2)) return throw_wrong_arguments("date_add", count, 2, 2, 1);
+  CVarRef arg0(a0);
+  CVarRef arg1(a1);
+  return (x_date_add(arg0, arg1));
+}
+Variant i_date_add(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_add);
 }
 Variant ifa_spl_autoload_call(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 1)) return throw_wrong_arguments("spl_autoload_call", count, 1, 1, 1);
@@ -18635,6 +18728,15 @@ Variant ifa_magickscaleimage(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) 
 Variant i_magickscaleimage(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_magickscaleimage);
 }
+Variant ifa_date_interval_format(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 2)) return throw_wrong_arguments("date_interval_format", count, 2, 2, 1);
+  CVarRef arg0(a0);
+  CVarRef arg1(a1);
+  return (x_date_interval_format(arg0, arg1));
+}
+Variant i_date_interval_format(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_interval_format);
+}
 Variant ifa_imap_setacl(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count != 4)) return throw_wrong_arguments("imap_setacl", count, 4, 4, 1);
   CVarRef arg0(a0);
@@ -19087,6 +19189,14 @@ Variant ifa_magicksetimageblueprimary(void *extra, int count, INVOKE_FEW_ARGS_IM
 Variant i_magicksetimageblueprimary(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_magicksetimageblueprimary);
 }
+Variant ifa_drawgetstrokeantialias(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count != 1)) return throw_wrong_arguments("drawgetstrokeantialias", count, 1, 1, 1);
+  CVarRef arg0(a0);
+  return (x_drawgetstrokeantialias(arg0));
+}
+Variant i_drawgetstrokeantialias(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_drawgetstrokeantialias);
+}
 Variant ifa_session_module_name(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count > 1)) return throw_toomany_arguments("session_module_name", 1, 1);
   if (count <= 0) return (x_session_module_name());
@@ -19095,14 +19205,6 @@ Variant ifa_session_module_name(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARG
 }
 Variant i_session_module_name(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_session_module_name);
-}
-Variant ifa_drawgetstrokeantialias(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
-  if (UNLIKELY(count != 1)) return throw_wrong_arguments("drawgetstrokeantialias", count, 1, 1, 1);
-  CVarRef arg0(a0);
-  return (x_drawgetstrokeantialias(arg0));
-}
-Variant i_drawgetstrokeantialias(void *extra, CArrRef params) {
-  return invoke_func_few_handler(extra, params, &ifa_drawgetstrokeantialias);
 }
 Variant ifa_checkdnsrr(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count < 1 || count > 2)) return throw_wrong_arguments("checkdnsrr", count, 1, 2, 1);
@@ -20970,6 +21072,17 @@ Variant ifa_memcache_pconnect(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS)
 Variant i_memcache_pconnect(void *extra, CArrRef params) {
   return invoke_func_few_handler(extra, params, &ifa_memcache_pconnect);
 }
+Variant ifa_date_diff(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
+  if (UNLIKELY(count < 2 || count > 3)) return throw_wrong_arguments("date_diff", count, 2, 3, 1);
+  CVarRef arg0(a0);
+  CVarRef arg1(a1);
+  if (count <= 2) return (x_date_diff(arg0, arg1));
+  CVarRef arg2(a2);
+  return (x_date_diff(arg0, arg1, arg2));
+}
+Variant i_date_diff(void *extra, CArrRef params) {
+  return invoke_func_few_handler(extra, params, &ifa_date_diff);
+}
 Variant ifa_strcspn(void *extra, int count, INVOKE_FEW_ARGS_IMPL_ARGS) {
   if (UNLIKELY(count < 2 || count > 4)) return throw_wrong_arguments("strcspn", count, 2, 4, 1);
   CVarRef arg0(a0);
@@ -21650,6 +21763,7 @@ CallInfo ci_gzfile((void*)&i_gzfile, (void*)&ifa_gzfile, 2, 0, 0x000000000000000
 CallInfo ci_sprintf((void*)&i_sprintf, (void*)&ifa_sprintf, 1, 1, 0x0000000000000000LL);
 CallInfo ci_magickgetwandsize((void*)&i_magickgetwandsize, (void*)&ifa_magickgetwandsize, 1, 0, 0x0000000000000000LL);
 CallInfo ci_magickcropimage((void*)&i_magickcropimage, (void*)&ifa_magickcropimage, 5, 0, 0x0000000000000000LL);
+CallInfo ci_date_interval_create_from_date_string((void*)&i_date_interval_create_from_date_string, (void*)&ifa_date_interval_create_from_date_string, 1, 0, 0x0000000000000000LL);
 CallInfo ci_function_exists((void*)&i_function_exists, (void*)&ifa_function_exists, 1, 0, 0x0000000000000000LL);
 CallInfo ci_mb_encode_mimeheader((void*)&i_mb_encode_mimeheader, (void*)&ifa_mb_encode_mimeheader, 5, 0, 0x0000000000000000LL);
 CallInfo ci_stream_bucket_append((void*)&i_stream_bucket_append, (void*)&ifa_stream_bucket_append, 2, 0, 0x0000000000000000LL);
@@ -21697,6 +21811,7 @@ CallInfo ci_pixelsetgreenquantum((void*)&i_pixelsetgreenquantum, (void*)&ifa_pix
 CallInfo ci_drawpathellipticarcabsolute((void*)&i_drawpathellipticarcabsolute, (void*)&ifa_drawpathellipticarcabsolute, 8, 0, 0x0000000000000000LL);
 CallInfo ci_dom_node_clone_node((void*)&i_dom_node_clone_node, (void*)&ifa_dom_node_clone_node, 2, 0, 0x0000000000000000LL);
 CallInfo ci_imagepstext((void*)&i_imagepstext, (void*)&ifa_imagepstext, 12, 0, 0x0000000000000000LL);
+CallInfo ci_date_sub((void*)&i_date_sub, (void*)&ifa_date_sub, 2, 0, 0x0000000000000000LL);
 CallInfo ci_ldap_sort((void*)&i_ldap_sort, (void*)&ifa_ldap_sort, 3, 0, 0x0000000000000000LL);
 CallInfo ci_escapeshellcmd((void*)&i_escapeshellcmd, (void*)&ifa_escapeshellcmd, 1, 0, 0x0000000000000000LL);
 CallInfo ci_hphp_object_pointer((void*)&i_hphp_object_pointer, (void*)&ifa_hphp_object_pointer, 1, 0, 0x0000000000000000LL);
@@ -21811,7 +21926,7 @@ CallInfo ci_dom_element_remove_attribute((void*)&i_dom_element_remove_attribute,
 CallInfo ci_curl_init((void*)&i_curl_init, (void*)&ifa_curl_init, 1, 0, 0x0000000000000000LL);
 CallInfo ci_imagesx((void*)&i_imagesx, (void*)&ifa_imagesx, 1, 0, 0x0000000000000000LL);
 CallInfo ci_iptcparse((void*)&i_iptcparse, (void*)&ifa_iptcparse, 1, 0, 0x0000000000000000LL);
-CallInfo ci_timezone_identifiers_list((void*)&i_timezone_identifiers_list, (void*)&ifa_timezone_identifiers_list, 0, 0, 0x0000000000000000LL);
+CallInfo ci_timezone_identifiers_list((void*)&i_timezone_identifiers_list, (void*)&ifa_timezone_identifiers_list, 2, 0, 0x0000000000000000LL);
 CallInfo ci_imap_get_quotaroot((void*)&i_imap_get_quotaroot, (void*)&ifa_imap_get_quotaroot, 2, 0, 0x0000000000000000LL);
 CallInfo ci_mysql_db_name((void*)&i_mysql_db_name, (void*)&ifa_mysql_db_name, 3, 0, 0x0000000000000000LL);
 CallInfo ci_drawgetexceptiontype((void*)&i_drawgetexceptiontype, (void*)&ifa_drawgetexceptiontype, 1, 0, 0x0000000000000000LL);
@@ -21843,6 +21958,7 @@ CallInfo ci_hphp_murmurhash((void*)&i_hphp_murmurhash, (void*)&ifa_hphp_murmurha
 CallInfo ci_xmlwriter_start_dtd_attlist((void*)&i_xmlwriter_start_dtd_attlist, (void*)&ifa_xmlwriter_start_dtd_attlist, 2, 0, 0x0000000000000000LL);
 CallInfo ci_join((void*)&i_join, (void*)&ifa_join, 2, 0, 0x0000000000000000LL);
 CallInfo ci_qlzcompress((void*)&i_qlzcompress, (void*)&ifa_qlzcompress, 2, 0, 0x0000000000000000LL);
+CallInfo ci_timezone_location_get((void*)&i_timezone_location_get, (void*)&ifa_timezone_location_get, 1, 0, 0x0000000000000000LL);
 CallInfo ci_magickgetimage((void*)&i_magickgetimage, (void*)&ifa_magickgetimage, 1, 0, 0x0000000000000000LL);
 CallInfo ci_array_replace_recursive((void*)&i_array_replace_recursive, (void*)&ifa_array_replace_recursive, 1, 1, 0x0000000000000000LL);
 CallInfo ci_bcpow((void*)&i_bcpow, (void*)&ifa_bcpow, 3, 0, 0x0000000000000000LL);
@@ -22030,6 +22146,7 @@ CallInfo ci_session_commit((void*)&i_session_commit, (void*)&ifa_session_commit,
 CallInfo ci_openssl_get_privatekey((void*)&i_openssl_get_privatekey, (void*)&ifa_openssl_get_privatekey, 2, 0, 0x0000000000000000LL);
 CallInfo ci_mt_srand((void*)&i_mt_srand, (void*)&ifa_mt_srand, 1, 0, 0x0000000000000000LL);
 CallInfo ci_drawarc((void*)&i_drawarc, (void*)&ifa_drawarc, 7, 0, 0x0000000000000000LL);
+CallInfo ci_date_timestamp_get((void*)&i_date_timestamp_get, (void*)&ifa_date_timestamp_get, 1, 0, 0x0000000000000000LL);
 CallInfo ci_msg_queue_exists((void*)&i_msg_queue_exists, (void*)&ifa_msg_queue_exists, 1, 0, 0x0000000000000000LL);
 CallInfo ci_strtotime((void*)&i_strtotime, (void*)&ifa_strtotime, 2, 0, 0x0000000000000000LL);
 CallInfo ci_hphp_get_thread_id((void*)&i_hphp_get_thread_id, (void*)&ifa_hphp_get_thread_id, 0, 0, 0x0000000000000000LL);
@@ -22215,6 +22332,7 @@ CallInfo ci_krsort((void*)&i_krsort, (void*)&ifa_krsort, 2, 0, 0x000000000000000
 CallInfo ci_pcntl_wstopsig((void*)&i_pcntl_wstopsig, (void*)&ifa_pcntl_wstopsig, 1, 0, 0x0000000000000000LL);
 CallInfo ci_imagefilledarc((void*)&i_imagefilledarc, (void*)&ifa_imagefilledarc, 9, 0, 0x0000000000000000LL);
 CallInfo ci_intl_get_error_message((void*)&i_intl_get_error_message, (void*)&ifa_intl_get_error_message, 0, 0, 0x0000000000000000LL);
+CallInfo ci_libredis((void*)&i_libredis, (void*)&ifa_libredis, 0, 0, 0x0000000000000000LL);
 CallInfo ci_hphp_splfileobject_fscanf((void*)&i_hphp_splfileobject_fscanf, (void*)&ifa_hphp_splfileobject_fscanf, 4, 0, 0x0000000000000000LL);
 CallInfo ci_eregi_replace((void*)&i_eregi_replace, (void*)&ifa_eregi_replace, 3, 0, 0x0000000000000000LL);
 CallInfo ci_mcrypt_module_get_supported_key_sizes((void*)&i_mcrypt_module_get_supported_key_sizes, (void*)&ifa_mcrypt_module_get_supported_key_sizes, 2, 0, 0x0000000000000000LL);
@@ -22292,6 +22410,7 @@ CallInfo ci_drawgettextalignment((void*)&i_drawgettextalignment, (void*)&ifa_dra
 CallInfo ci_magicknegateimage((void*)&i_magicknegateimage, (void*)&ifa_magicknegateimage, 3, 0, 0x0000000000000000LL);
 CallInfo ci_imap_num_msg((void*)&i_imap_num_msg, (void*)&ifa_imap_num_msg, 1, 0, 0x0000000000000000LL);
 CallInfo ci_mcrypt_enc_get_block_size((void*)&i_mcrypt_enc_get_block_size, (void*)&ifa_mcrypt_enc_get_block_size, 1, 0, 0x0000000000000000LL);
+CallInfo ci_date_timestamp_set((void*)&i_date_timestamp_set, (void*)&ifa_date_timestamp_set, 2, 0, 0x0000000000000000LL);
 CallInfo ci_drawsetclipunits((void*)&i_drawsetclipunits, (void*)&ifa_drawsetclipunits, 2, 0, 0x0000000000000000LL);
 CallInfo ci_xhprof_enable((void*)&i_xhprof_enable, (void*)&ifa_xhprof_enable, 2, 0, 0x0000000000000000LL);
 CallInfo ci_magickdeconstructimages((void*)&i_magickdeconstructimages, (void*)&ifa_magickdeconstructimages, 1, 0, 0x0000000000000000LL);
@@ -22369,6 +22488,7 @@ CallInfo ci_msg_get_queue((void*)&i_msg_get_queue, (void*)&ifa_msg_get_queue, 2,
 CallInfo ci_utf8_encode((void*)&i_utf8_encode, (void*)&ifa_utf8_encode, 1, 0, 0x0000000000000000LL);
 CallInfo ci_destroypixeliterator((void*)&i_destroypixeliterator, (void*)&ifa_destroypixeliterator, 1, 0, 0x0000000000000000LL);
 CallInfo ci_drawbezier((void*)&i_drawbezier, (void*)&ifa_drawbezier, 2, 0, 0x0000000000000000LL);
+CallInfo ci_date_create_from_format((void*)&i_date_create_from_format, (void*)&ifa_date_create_from_format, 3, 0, 0x0000000000000000LL);
 CallInfo ci_substr_compare((void*)&i_substr_compare, (void*)&ifa_substr_compare, 5, 0, 0x0000000000000000LL);
 CallInfo ci_hphp_splfileinfo_getmtime((void*)&i_hphp_splfileinfo_getmtime, (void*)&ifa_hphp_splfileinfo_getmtime, 1, 0, 0x0000000000000000LL);
 CallInfo ci_parse_hdf_string((void*)&i_parse_hdf_string, (void*)&ifa_parse_hdf_string, 1, 0, 0x0000000000000000LL);
@@ -22401,6 +22521,7 @@ CallInfo ci_rename((void*)&i_rename, (void*)&ifa_rename, 3, 0, 0x000000000000000
 CallInfo ci_wandgetexceptiontype((void*)&i_wandgetexceptiontype, (void*)&ifa_wandgetexceptiontype, 1, 0, 0x0000000000000000LL);
 CallInfo ci_dom_node_has_attributes((void*)&i_dom_node_has_attributes, (void*)&ifa_dom_node_has_attributes, 1, 0, 0x0000000000000000LL);
 CallInfo ci_imagestring((void*)&i_imagestring, (void*)&ifa_imagestring, 6, 0, 0x0000000000000000LL);
+CallInfo ci_date_get_last_errors((void*)&i_date_get_last_errors, (void*)&ifa_date_get_last_errors, 0, 0, 0x0000000000000000LL);
 CallInfo ci_mb_detect_order((void*)&i_mb_detect_order, (void*)&ifa_mb_detect_order, 1, 0, 0x0000000000000000LL);
 CallInfo ci_imagecreatefromgd((void*)&i_imagecreatefromgd, (void*)&ifa_imagecreatefromgd, 1, 0, 0x0000000000000000LL);
 CallInfo ci_apc_cas((void*)&i_apc_cas, (void*)&ifa_apc_cas, 4, 0, 0x0000000000000000LL);
@@ -22921,6 +23042,7 @@ CallInfo ci_openssl_csr_export((void*)&i_openssl_csr_export, (void*)&ifa_openssl
 CallInfo ci_shm_has_var((void*)&i_shm_has_var, (void*)&ifa_shm_has_var, 2, 0, 0x0000000000000000LL);
 CallInfo ci_defined((void*)&i_defined, (void*)&ifa_defined, 1, 0, 0x0000000000000000LL);
 CallInfo ci_ldap_parse_result((void*)&i_ldap_parse_result, (void*)&ifa_ldap_parse_result, 6, 0, 0x000000000000003CLL);
+CallInfo ci_date_parse_from_format((void*)&i_date_parse_from_format, (void*)&ifa_date_parse_from_format, 2, 0, 0x0000000000000000LL);
 CallInfo ci_pushdrawingwand((void*)&i_pushdrawingwand, (void*)&ifa_pushdrawingwand, 1, 0, 0x0000000000000000LL);
 CallInfo ci_drawsetstrokemiterlimit((void*)&i_drawsetstrokemiterlimit, (void*)&ifa_drawsetstrokemiterlimit, 2, 0, 0x0000000000000000LL);
 CallInfo ci_magicktintimage((void*)&i_magicktintimage, (void*)&ifa_magicktintimage, 3, 0, 0x0000000000000000LL);
@@ -23116,14 +23238,14 @@ CallInfo ci_hphp_get_timers((void*)&i_hphp_get_timers, (void*)&ifa_hphp_get_time
 CallInfo ci_dom_document_get_element_by_id((void*)&i_dom_document_get_element_by_id, (void*)&ifa_dom_document_get_element_by_id, 2, 0, 0x0000000000000000LL);
 CallInfo ci_magickmattefloodfillimage((void*)&i_magickmattefloodfillimage, (void*)&ifa_magickmattefloodfillimage, 6, 0, 0x0000000000000000LL);
 CallInfo ci_posix_setpgid((void*)&i_posix_setpgid, (void*)&ifa_posix_setpgid, 2, 0, 0x0000000000000000LL);
-CallInfo ci_preg_last_error((void*)&i_preg_last_error, (void*)&ifa_preg_last_error, 0, 0, 0x0000000000000000LL);
 CallInfo ci_dns_get_mx((void*)&i_dns_get_mx, (void*)&ifa_dns_get_mx, 3, 0, 0x0000000000000006LL);
-CallInfo ci_hphp_invoke((void*)&i_hphp_invoke, (void*)&ifa_hphp_invoke, 2, 0, 0x0000000000000000LL);
+CallInfo ci_preg_last_error((void*)&i_preg_last_error, (void*)&ifa_preg_last_error, 0, 0, 0x0000000000000000LL);
 CallInfo ci_imagecopymerge((void*)&i_imagecopymerge, (void*)&ifa_imagecopymerge, 9, 0, 0x0000000000000000LL);
-CallInfo ci_register_shutdown_function((void*)&i_register_shutdown_function, (void*)&ifa_register_shutdown_function, 1, 1, 0x0000000000000000LL);
+CallInfo ci_hphp_invoke((void*)&i_hphp_invoke, (void*)&ifa_hphp_invoke, 2, 0, 0x0000000000000000LL);
 CallInfo ci_imap_mailboxmsginfo((void*)&i_imap_mailboxmsginfo, (void*)&ifa_imap_mailboxmsginfo, 1, 0, 0x0000000000000000LL);
-CallInfo ci_xml_set_notation_decl_handler((void*)&i_xml_set_notation_decl_handler, (void*)&ifa_xml_set_notation_decl_handler, 2, 0, 0x0000000000000000LL);
+CallInfo ci_register_shutdown_function((void*)&i_register_shutdown_function, (void*)&ifa_register_shutdown_function, 1, 1, 0x0000000000000000LL);
 CallInfo ci_dom_element_set_attribute_node_ns((void*)&i_dom_element_set_attribute_node_ns, (void*)&ifa_dom_element_set_attribute_node_ns, 2, 0, 0x0000000000000000LL);
+CallInfo ci_xml_set_notation_decl_handler((void*)&i_xml_set_notation_decl_handler, (void*)&ifa_xml_set_notation_decl_handler, 2, 0, 0x0000000000000000LL);
 CallInfo ci_mysql_next_result((void*)&i_mysql_next_result, (void*)&ifa_mysql_next_result, 1, 0, 0x0000000000000000LL);
 CallInfo ci_magickgetversion((void*)&i_magickgetversion, (void*)&ifa_magickgetversion, 0, 0, 0x0000000000000000LL);
 CallInfo ci_dom_document_create_element_ns((void*)&i_dom_document_create_element_ns, (void*)&ifa_dom_document_create_element_ns, 4, 0, 0x0000000000000000LL);
@@ -23156,7 +23278,7 @@ CallInfo ci_file((void*)&i_file, (void*)&ifa_file, 3, 0, 0x0000000000000000LL);
 CallInfo ci_fstat((void*)&i_fstat, (void*)&ifa_fstat, 1, 0, 0x0000000000000000LL);
 CallInfo ci_curl_multi_init((void*)&i_curl_multi_init, (void*)&ifa_curl_multi_init, 0, 0, 0x0000000000000000LL);
 CallInfo ci_is_int((void*)&i_is_int, (void*)&ifa_is_int, 1, 0, 0x0000000000000000LL);
-CallInfo ci_timezone_transitions_get((void*)&i_timezone_transitions_get, (void*)&ifa_timezone_transitions_get, 1, 0, 0x0000000000000000LL);
+CallInfo ci_timezone_transitions_get((void*)&i_timezone_transitions_get, (void*)&ifa_timezone_transitions_get, 3, 0, 0x0000000000000000LL);
 CallInfo ci_bin2hex((void*)&i_bin2hex, (void*)&ifa_bin2hex, 1, 0, 0x0000000000000000LL);
 CallInfo ci_magickflopimage((void*)&i_magickflopimage, (void*)&ifa_magickflopimage, 1, 0, 0x0000000000000000LL);
 CallInfo ci_ip2long((void*)&i_ip2long, (void*)&ifa_ip2long, 1, 0, 0x0000000000000000LL);
@@ -23165,6 +23287,7 @@ CallInfo ci_ezmlm_hash((void*)&i_ezmlm_hash, (void*)&ifa_ezmlm_hash, 1, 0, 0x000
 CallInfo ci_magickgetimageredprimary((void*)&i_magickgetimageredprimary, (void*)&ifa_magickgetimageredprimary, 1, 0, 0x0000000000000000LL);
 CallInfo ci_hphpd_install_user_command((void*)&i_hphpd_install_user_command, (void*)&ifa_hphpd_install_user_command, 2, 0, 0x0000000000000000LL);
 CallInfo ci_xmlwriter_write_attribute((void*)&i_xmlwriter_write_attribute, (void*)&ifa_xmlwriter_write_attribute, 3, 0, 0x0000000000000000LL);
+CallInfo ci_date_add((void*)&i_date_add, (void*)&ifa_date_add, 2, 0, 0x0000000000000000LL);
 CallInfo ci_spl_autoload_call((void*)&i_spl_autoload_call, (void*)&ifa_spl_autoload_call, 1, 0, 0x0000000000000000LL);
 CallInfo ci_mb_list_encodings((void*)&i_mb_list_encodings, (void*)&ifa_mb_list_encodings, 0, 0, 0x0000000000000000LL);
 CallInfo ci_curl_setopt_array((void*)&i_curl_setopt_array, (void*)&ifa_curl_setopt_array, 2, 0, 0x0000000000000000LL);
@@ -23242,6 +23365,7 @@ CallInfo ci_dom_document_schema_validate_xml((void*)&i_dom_document_schema_valid
 CallInfo ci_pixelsetopacity((void*)&i_pixelsetopacity, (void*)&ifa_pixelsetopacity, 2, 0, 0x0000000000000000LL);
 CallInfo ci_apc_cache_info((void*)&i_apc_cache_info, (void*)&ifa_apc_cache_info, 2, 0, 0x0000000000000000LL);
 CallInfo ci_magickscaleimage((void*)&i_magickscaleimage, (void*)&ifa_magickscaleimage, 3, 0, 0x0000000000000000LL);
+CallInfo ci_date_interval_format((void*)&i_date_interval_format, (void*)&ifa_date_interval_format, 2, 0, 0x0000000000000000LL);
 CallInfo ci_imap_setacl((void*)&i_imap_setacl, (void*)&ifa_imap_setacl, 4, 0, 0x0000000000000000LL);
 CallInfo ci_posix_times((void*)&i_posix_times, (void*)&ifa_posix_times, 0, 0, 0x0000000000000000LL);
 CallInfo ci_xml_parser_set_option((void*)&i_xml_parser_set_option, (void*)&ifa_xml_parser_set_option, 3, 0, 0x0000000000000000LL);
@@ -23288,8 +23412,8 @@ CallInfo ci_mb_eregi_replace((void*)&i_mb_eregi_replace, (void*)&ifa_mb_eregi_re
 CallInfo ci_imagegammacorrect((void*)&i_imagegammacorrect, (void*)&ifa_imagegammacorrect, 3, 0, 0x0000000000000000LL);
 CallInfo ci_magicksetimageresolution((void*)&i_magicksetimageresolution, (void*)&ifa_magicksetimageresolution, 3, 0, 0x0000000000000000LL);
 CallInfo ci_magicksetimageblueprimary((void*)&i_magicksetimageblueprimary, (void*)&ifa_magicksetimageblueprimary, 3, 0, 0x0000000000000000LL);
-CallInfo ci_session_module_name((void*)&i_session_module_name, (void*)&ifa_session_module_name, 1, 0, 0x0000000000000000LL);
 CallInfo ci_drawgetstrokeantialias((void*)&i_drawgetstrokeantialias, (void*)&ifa_drawgetstrokeantialias, 1, 0, 0x0000000000000000LL);
+CallInfo ci_session_module_name((void*)&i_session_module_name, (void*)&ifa_session_module_name, 1, 0, 0x0000000000000000LL);
 CallInfo ci_checkdnsrr((void*)&i_checkdnsrr, (void*)&ifa_checkdnsrr, 2, 0, 0x0000000000000000LL);
 CallInfo ci_apc_filehits((void*)&i_apc_filehits, (void*)&ifa_apc_filehits, 0, 0, 0x0000000000000000LL);
 CallInfo ci_bcpowmod((void*)&i_bcpowmod, (void*)&ifa_bcpowmod, 4, 0, 0x0000000000000000LL);
@@ -23481,6 +23605,7 @@ CallInfo ci_imagecreatefrompng((void*)&i_imagecreatefrompng, (void*)&ifa_imagecr
 CallInfo ci_drawgetfontstyle((void*)&i_drawgetfontstyle, (void*)&ifa_drawgetfontstyle, 1, 0, 0x0000000000000000LL);
 CallInfo ci_imap_status((void*)&i_imap_status, (void*)&ifa_imap_status, 3, 0, 0x0000000000000000LL);
 CallInfo ci_memcache_pconnect((void*)&i_memcache_pconnect, (void*)&ifa_memcache_pconnect, 4, 0, 0x0000000000000000LL);
+CallInfo ci_date_diff((void*)&i_date_diff, (void*)&ifa_date_diff, 3, 0, 0x0000000000000000LL);
 CallInfo ci_strcspn((void*)&i_strcspn, (void*)&ifa_strcspn, 4, 0, 0x0000000000000000LL);
 CallInfo ci_hphp_recursiveiteratoriterator_valid((void*)&i_hphp_recursiveiteratoriterator_valid, (void*)&ifa_hphp_recursiveiteratoriterator_valid, 1, 0, 0x0000000000000000LL);
 CallInfo ci_date_timezone_get((void*)&i_date_timezone_get, (void*)&ifa_date_timezone_get, 1, 0, 0x0000000000000000LL);
@@ -24134,6 +24259,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
     case 477:
       HASH_GUARD(0x04666D6F67C7A1DDLL, mysql_list_processes) {
         ci = &ci_mysql_list_processes;
+        return true;
+      }
+      break;
+    case 479:
+      HASH_GUARD(0x51DBD0910DF261DFLL, date_create_from_format) {
+        ci = &ci_date_create_from_format;
         return true;
       }
       break;
@@ -28636,6 +28767,10 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
       }
       break;
     case 3401:
+      HASH_GUARD(0x1729ABC1CB8F2D49LL, libredis) {
+        ci = &ci_libredis;
+        return true;
+      }
       HASH_GUARD(0x41785512C45FCD49LL, mysql_ping) {
         ci = &ci_mysql_ping;
         return true;
@@ -28920,6 +29055,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
     case 3572:
       HASH_GUARD(0x73B30E65808A6DF4LL, ctype_xdigit) {
         ci = &ci_ctype_xdigit;
+        return true;
+      }
+      break;
+    case 3583:
+      HASH_GUARD(0x1781F8B2FACCCDFFLL, date_add) {
+        ci = &ci_date_add;
         return true;
       }
       break;
@@ -30356,6 +30497,10 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
         ci = &ci_dom_xpath_query;
         return true;
       }
+      HASH_GUARD(0x532C657D3FEA3181LL, date_parse_from_format) {
+        ci = &ci_date_parse_from_format;
+        return true;
+      }
       break;
     case 4482:
       HASH_GUARD(0x130B62A8C77F3182LL, mb_ereg_search_getregs) {
@@ -31206,6 +31351,10 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
         ci = &ci_fb_intercept;
         return true;
       }
+      HASH_GUARD(0x27E94F02CC64938BLL, date_diff) {
+        ci = &ci_date_diff;
+        return true;
+      }
       break;
     case 5004:
       HASH_GUARD(0x7F18BA1FBD95B38CLL, hphp_directoryiterator_next) {
@@ -31830,6 +31979,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
     case 5347:
       HASH_GUARD(0x7D57A0D72D6254E3LL, ob_implicit_flush) {
         ci = &ci_ob_implicit_flush;
+        return true;
+      }
+      break;
+    case 5352:
+      HASH_GUARD(0x0A9E98234B0194E8LL, date_interval_create_from_date_string) {
+        ci = &ci_date_interval_create_from_date_string;
         return true;
       }
       break;
@@ -32491,6 +32646,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
         return true;
       }
       break;
+    case 5840:
+      HASH_GUARD(0x3C30A4DD0EC456D0LL, date_get_last_errors) {
+        ci = &ci_date_get_last_errors;
+        return true;
+      }
+      break;
     case 5841:
       HASH_GUARD(0x2B3D5B9AF915D6D1LL, imagecopymerge) {
         ci = &ci_imagecopymerge;
@@ -32778,6 +32939,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
     case 6024:
       HASH_GUARD(0x32D8CE5D0FA6D788LL, ldap_rename) {
         ci = &ci_ldap_rename;
+        return true;
+      }
+      break;
+    case 6030:
+      HASH_GUARD(0x1E4F4C2FAD7A178ELL, date_interval_format) {
+        ci = &ci_date_interval_format;
         return true;
       }
       break;
@@ -34867,6 +35034,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
         return true;
       }
       break;
+    case 7500:
+      HASH_GUARD(0x737152091C561D4CLL, date_timestamp_get) {
+        ci = &ci_date_timestamp_get;
+        return true;
+      }
+      break;
     case 7503:
       HASH_GUARD(0x0FBCF35ADD209D4FLL, drawarc) {
         ci = &ci_drawarc;
@@ -35179,6 +35352,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
         return true;
       }
       break;
+    case 7695:
+      HASH_GUARD(0x613461A1355F9E0FLL, date_sub) {
+        ci = &ci_date_sub;
+        return true;
+      }
+      break;
     case 7698:
       HASH_GUARD(0x05FAA2085D94FE12LL, urlencode) {
         ci = &ci_urlencode;
@@ -35267,6 +35446,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
         return true;
       }
       break;
+    case 7776:
+      HASH_GUARD(0x1BAA7F9718C21E60LL, date_timestamp_set) {
+        ci = &ci_date_timestamp_set;
+        return true;
+      }
+      break;
     case 7779:
       HASH_GUARD(0x5697E5F6AAF47E63LL, mb_http_input) {
         ci = &ci_mb_http_input;
@@ -35312,6 +35497,12 @@ bool get_call_info_builtin(const CallInfo *&ci, void *&extra, const char *s, int
     case 7802:
       HASH_GUARD(0x6A3D9F8EDB005E7ALL, flush) {
         ci = &ci_flush;
+        return true;
+      }
+      break;
+    case 7805:
+      HASH_GUARD(0x603D9827E530FE7DLL, timezone_location_get) {
+        ci = &ci_timezone_location_get;
         return true;
       }
       break;

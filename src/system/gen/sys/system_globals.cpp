@@ -36,7 +36,7 @@ SystemGlobals::SystemGlobals() {
 void SystemGlobals::initialize() {
   Globals::initialize();
   Globals *globals = get_globals();
-  pm_php$globals$symbols_php(false, globals, globals);
+  pm_php$$globals$$symbols$_php(false, globals, globals);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
