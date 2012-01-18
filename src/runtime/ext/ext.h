@@ -49,6 +49,7 @@
 #include <runtime/ext/profile/extprofile_iterator.h>
 #include <runtime/ext/profile/extprofile_json.h>
 #include <runtime/ext/profile/extprofile_ldap.h>
+#include <runtime/ext/profile/extprofile_libredis.h>
 #include <runtime/ext/profile/extprofile_magick.h>
 #include <runtime/ext/profile/extprofile_mailparse.h>
 #include <runtime/ext/profile/extprofile_math.h>

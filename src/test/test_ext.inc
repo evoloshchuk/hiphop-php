@@ -32,6 +32,7 @@ RUN_TESTSUITE(TestExtIpc);
 RUN_TESTSUITE(TestExtIterator);
 RUN_TESTSUITE(TestExtJson);
 RUN_TESTSUITE(TestExtLdap);
+RUN_TESTSUITE(TestExtLibredis);
 RUN_TESTSUITE(TestExtMagick);
 RUN_TESTSUITE(TestExtMailparse);
 RUN_TESTSUITE(TestExtMath);

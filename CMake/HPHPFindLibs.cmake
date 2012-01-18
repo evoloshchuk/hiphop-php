@@ -306,6 +306,13 @@ if (FREEBSD)
 	FIND_LIBRARY (EXECINFO_LIB execinfo)
 endif()
 
+FIND_LIBRARY(LIBREDIS_LIB redis)
+FIND_PATH(LIBREDIS_INCLUDE_DIR redis.h)
+if (NOT LIBREDIS_LIB OR NOT LIBREDIS_INCLUDE_DIR)
+	message(FATAL_ERROR "libredis not found")
+endif()
+include_directories(${LIBREDIS_INCLUDE_DIR})
+
 #find_package(BISON REQUIRED)
 #find_package(FLEX REQUIRED)
 
@@ -397,5 +404,7 @@ endif()
 	if (CCLIENT_NEEDS_PAM)
 		target_link_libraries(${target} ${PAM_LIBRARY})
 	endif()
+
+	target_link_libraries(${target} ${LIBREDIS_LIB})
 
 endmacro()
